@@ -1,0 +1,34 @@
+.headline {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  font-weight: 400;
+}
+
+.script {
+  position: absolute;
+  top: 46%;
+  font-family: var(--font-script);
+  font-size: clamp(2.6rem, 9vw, 8rem);
+  color: var(--violet);
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
+}
+
+.left { left: var(--pad); }
+.right { right: var(--pad); top: 50%; }
+
+.tagline {
+  position: absolute;
+  left: var(--pad);
+  top: calc(46% + clamp(3.2rem, 10vw, 8.5rem));
+  font-family: var(--font-script);
+  font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+}
+
+@media (max-width: 760px) {
+  .right { top: calc(46% + 3.4rem); }
+  .tagline { top: calc(46% + 7rem); }
+}

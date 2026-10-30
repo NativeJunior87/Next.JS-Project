@@ -1,0 +1,28 @@
+:root {
+  --ink: #0d0b12;
+  --ghost: rgba(255, 255, 255, 0.11);
+  --text: #f3f1f8;
+  --muted: #8f8a9d;
+  --violet: #7b3fe4;
+  --ember: #ff8a3d;
+  --pad: clamp(1.25rem, 4vw, 3rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  background: var(--ink);
+  
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+  border-radius: 6px;
+}

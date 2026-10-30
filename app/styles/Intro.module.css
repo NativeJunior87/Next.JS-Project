@@ -1,0 +1,51 @@
+.intro {
+  position: absolute;
+  left: var(--pad);
+  bottom: var(--pad);
+  max-width: 20rem;
+  z-index: 4;
+}
+
+.intro h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
+}
+
+.intro p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.intro a {
+  position: relative;
+  text-decoration: none;
+  color: rgb(160, 86, 230);
+  text-shadow: 0px 0px 4px rgb(169, 82, 219);
+}
+
+.intro a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transform: translateX(-50%);
+  transition: width 0.5s ease;
+}
+
+.intro a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .intro {
+    bottom: calc(var(--pad) + 9.5rem);
+    max-width: 16rem;
+  }
+}

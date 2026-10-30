@@ -1,0 +1,63 @@
+/*
+  The layer is fixed to the screen, so the crystal can never scroll away or
+  drift lower. Its height on screen is always the middle (50%).
+  --p (0 to 1) is written by ScrollStage.jsx and reaches 1 when the middle of
+  the About section is at the middle of the screen.
+
+  Keep these numbers in sync with AboutSection.module.css:
+  max width 72rem, column gap 4rem, columns 0.8fr / 1.2fr.
+*/
+.layer {
+  --container: min(72rem, calc(100% - 2 * var(--pad)));
+  --start-y: 50%;
+  --land-x: calc((100% - var(--container)) / 2 + (var(--container) - 4rem) * 0.2);
+  --land-y: 50%;
+  --land-scale: 0.7;
+  --land-opacity: 1;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100svh;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.art {
+  position: absolute;
+  left: calc(50% + (var(--land-x) - 50%) * var(--p, 0));
+  top: calc(var(--start-y) + (var(--land-y) - var(--start-y)) * var(--p, 0));
+  width: clamp(14rem, 34vw, 30rem);
+  opacity: calc(1 - (1 - var(--land-opacity)) * var(--p, 0));
+  transform: translate(-50%, -48%) scale(calc(1 - (1 - var(--land-scale)) * var(--p, 0)));
+  will-change: transform;
+}
+
+.crystal {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 30px 60px rgba(123, 63, 228, 0.55));
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-14px) rotate(1.5deg); }
+}
+
+/* phones: the crystal belongs to the hero only. The layer is absolute instead
+   of fixed, so it scrolls away with the hero and never reaches the About section. */
+@media (max-width: 760px) {
+  .layer {
+    position: absolute;
+    --start-y: 44%;
+    --land-x: 50%;
+    --land-y: 44%;
+    --land-scale: 1;
+    --land-opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crystal { animation: none; }
+}

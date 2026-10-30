@@ -1,0 +1,7 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: var(--pad);
+  /* no background: the whole site shares the one solid page color */
+}
